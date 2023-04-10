@@ -10,7 +10,6 @@ const OfferPopularProduct = () => {
   const [copiedCode, setCopiedCode] = useState("");
   const [copied, setCopied] = useState(false);
 
-
   const handleCopied = (code) => {
     setCopiedCode(code);
     setCopied(true);
@@ -35,12 +34,12 @@ const OfferPopularProduct = () => {
     content = <ErrorMessage message="There was an error" />;
   }
 
-  if (!isLoading && !isError && offerCoupons?.length === 0) {
+  if (!isLoading && !isError && offerCoupons.data?.length === 0) {
     content = <ErrorMessage message="No products found!" />;
   }
 
-  if (!isLoading && !isError && offerCoupons?.length > 0) {
-    const coupon_items = offerCoupons;
+  if (!isLoading && !isError && offerCoupons.data?.length > 0) {
+    const coupon_items = offerCoupons.data;
     content = (
       <div className="row">
         {coupon_items.map((coupon) => (
@@ -67,7 +66,7 @@ const OfferPopularProduct = () => {
           </div>
           <div className="col-xl-6 col-md-6">
             <div className="product__offer-btn mb-30 text-md-end">
-              <Link href="/shop" className="tp-btn">
+              <Link href="/promos" className="tp-btn">
                 View All Products
               </Link>
             </div>

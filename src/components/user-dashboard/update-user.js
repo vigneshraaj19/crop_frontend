@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import * as Yup from "yup";
+import axios from "axios";
 // internal
 import { EmailTwo, Location, MobileTwo, UserTwo } from "@svg/index";
 import { useUpdateProfileMutation } from "src/redux/features/auth/authApi";
@@ -19,10 +20,12 @@ const schema = Yup.object().shape({
 });
 
 const UpdateUser = () => {
-  const [bioText, setBioText] = useState("Hi there, this is my bio...");
+  
   const { user } = useSelector((state) => state.auth);
+  const[data,setdata]=useState({})
 
   const [updateProfile, {}] = useUpdateProfileMutation();
+
   // react hook form
   const {
     register,
@@ -33,28 +36,32 @@ const UpdateUser = () => {
     resolver: yupResolver(schema),
   });
 
-  
+  const { user: userInfo } = useSelector((state) => state.auth);
+
+  if (userInfo) {
+
+    useEffect(() => {
+      let result = localStorage.getItem('auth');
+      let tokenNew = JSON.parse(result)['accessToken'];
+      axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}api/userdata/details`,
+        {
+          headers: {
+            'Authorization': `${tokenNew}`
+          }
+        }
+      ).then((item) => {       
+        setdata(item.data.data.agegroup)
+        console.log("update",data)
+      })
+    }, [userInfo])
+  }  
   // on submit
   const onSubmit = (data) => {
-    updateProfile({
-      id:user?._id,
-      name:data.name,
-      email:data.email,
-      phone:data.phone,
-      address:data.address,
-      bio:data.bio,
-    }).then((result) => {
-      console.log(result);
-      if(result?.error){
-        notifyError(result?.error?.data?.message);
-      }
-      else {
-        notifySuccess(result?.data?.message);
-      }
-    })
+   console.log(data)
     reset();
   };
-
+  
   return (
     <div className="profile__info">
       <h3 className="profile__info-title">Personal Details</h3>
@@ -68,8 +75,8 @@ const UpdateUser = () => {
                     {...register("name", { required: `Name is required!` })}
                     type="text"
                     placeholder="Enter your username"
-                    defaultValue={user?.UserTier
-                    }
+          
+                    defaultValue={user?.UserTier}
                   />
                   <span>
                     <UserTwo />
@@ -95,7 +102,104 @@ const UpdateUser = () => {
                 </div>
               </div>
             </div>
+            <div className="col-xxl-6 col-md-6">
+              <div className="profile__input-box">
+                <div className="profile__input">
+                  <input
+                    {...register("email", { required: `Email is required!` })}
+                    type="email"
+                    placeholder="Enter your email"
+                    defaultValue={user?.email}
+                  />
+                  <span>
+                    <EmailTwo />
+                  </span>
+                  <ErrorMessage message={errors.email?.message} />
+                </div>
+              </div>
+            </div>
+            <div className="col-xxl-6 col-md-6">
+              <div className="profile__input-box">
+                <div className="profile__input">
+                  <input
+                    {...register("email", { required: `Email is required!` })}
+                    type="email"
+                    placeholder="Enter your email"
+                    defaultValue={user?.email}
+                  />
+                  <span>
+                    <EmailTwo />
+                  </span>
+                  <ErrorMessage message={errors.email?.message} />
+                </div>
+              </div>
+            </div>
+            <div className="col-xxl-6 col-md-6">
+              <div className="profile__input-box">
+                <div className="profile__input">
+                  <input
+                    {...register("email", { required: `Email is required!` })}
+                    type="email"
+                    placeholder="Enter your email"
+                    defaultValue={user?.email}
+                  />
+                  <span>
+                    <EmailTwo />
+                  </span>
+                  <ErrorMessage message={errors.email?.message} />
+                </div>
+              </div>
+            </div>
+            <div className="col-xxl-6 col-md-6">
+              <div className="profile__input-box">
+                <div className="profile__input">
+                  <input
+                    {...register("email", { required: `Email is required!` })}
+                    type="email"
+                    placeholder="Enter your email"
+                    defaultValue={user?.email}
+                  />
+                  <span>
+                    <EmailTwo />
+                  </span>
+                  <ErrorMessage message={errors.email?.message} />
+                </div>
+              </div>
+            </div>
 
+            <div className="col-xxl-6 col-md-6">
+              <div className="profile__input-box">
+                <div className="profile__input">
+                  <input
+                    {...register("email", { required: `Email is required!` })}
+                    type="email"
+                    placeholder="Enter your email"
+                    defaultValue={user?.email}
+                  />
+                  <span>
+                    <EmailTwo />
+                  </span>
+                  <ErrorMessage message={errors.email?.message} />
+                </div>
+              </div>
+            </div>
+            <div className="col-xxl-6 col-md-6">
+              <div className="profile__input-box">
+                <div className="profile__input">
+                  <input
+                    {...register("email", { required: `Email is required!` })}
+                    type="email"
+                    placeholder="Enter your email"
+                    defaultValue={user?.email}
+                  />
+                  <span>
+                    <EmailTwo />
+                  </span>
+                  <ErrorMessage message={errors.email?.message} />
+                </div>
+              </div>
+            </div>
+            
             <div className="col-xxl-12">
               <div className="profile__input-box">
                 <div className="profile__input">
@@ -125,23 +229,6 @@ const UpdateUser = () => {
                     <Location />
                   </span>
                   <ErrorMessage message={errors.address?.message} />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-xxl-12">
-              <div className="profile__input-box">
-                <div className="profile__input">
-                  <textarea
-                    {...register("bio", { required: true })}
-                    placeholder="Enter your bio"
-                    value={bioText}
-                    
-                    onChange={(e) => setBioText(e.target.value)}
-                  >
-                    Hi there, this is my bio...
-                  </textarea>
-                  <ErrorMessage message={errors.bio?.message} />
                 </div>
               </div>
             </div>

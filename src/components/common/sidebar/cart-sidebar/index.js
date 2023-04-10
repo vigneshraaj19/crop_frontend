@@ -6,7 +6,6 @@ import SingleCartItem from "./single-cart-item";
 import useCartInfo from "@hooks/use-cart-info";
 import EmptyCart from "./empty-cart";
 
-
 const CartSidebar = ({ isCartOpen, setIsCartOpen }) => {
   const { cart_products } = useSelector((state) => state.cart);
   const {total} = useCartInfo();
@@ -51,9 +50,9 @@ const CartSidebar = ({ isCartOpen, setIsCartOpen }) => {
               <Link href="/cart" className="tp-btn mb-10 w-100">
                 <span></span> view cart
               </Link>
-              <Link href="/checkout" className="tp-btn-border w-100 cursor-pointer">
+              {cart_products.length > 0 && <Link href="/checkout" className="tp-btn-border w-100 cursor-pointer">
                 <span></span> checkout
-              </Link>
+              </Link>}
             </div>
           </div>
         </div>

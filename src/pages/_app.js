@@ -6,6 +6,7 @@ import { store } from "src/redux/store";
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
 }
+import "../../public/assets/css/register.css";
 import "../styles/index.scss";
 
 // stripePromise

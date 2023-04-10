@@ -20,7 +20,6 @@ const SingleOrder = ({ params }) => {
   const { data: order, isError, isLoading } = useGetUserOrderByIdQuery(orderId);
   let content = null;
 
-
   if (isLoading) {
     content = (
       <div
@@ -47,8 +46,10 @@ const SingleOrder = ({ params }) => {
       shippingCost,
       discount,
       totalAmount,
+      points
     } = order.order;
-    console.log(discount)
+
+    console.log(order,"discount");
     content = (
       <section className="invoice__area pt-120 pb-120">
         <div className="container">
@@ -146,6 +147,7 @@ const SingleOrder = ({ params }) => {
                   ))}
                 </tbody>
               </table>
+              
             </div>
 
             {/* <!-- invoice total --> */}
@@ -163,6 +165,12 @@ const SingleOrder = ({ params }) => {
                   <div className="invoice__shippint-cost mb-30">
                     <h5 className="mb-0">Shipping Cost</h5>
                     <p className="tp-font-medium">${shippingCost}</p>
+                  </div>
+                </div>
+                <div className="col-lg-3 col-md-4">
+                  <div className="invoice__shippint-cost mb-30">
+                    <h5 className="mb-0">Crop points</h5>
+                    <p className="tp-font-medium">{points}</p>
                   </div>
                 </div>
                 {/* <div className="col-lg-3 col-md-4">

@@ -31,8 +31,6 @@ const SingleProduct = ({ product, discountPrd = false }) => {
     dispatch(add_to_wishlist(prd));
   };
 
-  console.log("qd f",
-_id)
   return (
     <React.Fragment>
       <div className="product__item p-relative transition-3 mb-50">

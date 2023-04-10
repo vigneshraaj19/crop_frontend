@@ -1,14 +1,52 @@
 import React, { useState } from "react";
 // internal
 import bg from "@assets/img/cta/13/cta-bg-1.jpg";
+import { notifyError, notifySuccess } from "@utils/toast";
+import axios from "axios";
 
 const ShopCta = () => {
   // handleSubmit
-  const[value,setvalue]=useState()
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(value)
+
+const [email, setEmail] = useState('');
+const [emailError, setEmailError] = useState('');
+const[available,setavailable]=useState(false)
+
+const validateEmail = (email) => {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+const handleEmailChange = (e) => {
+  const value = e.target.value;
+  setEmail(value);
+  if (value.trim() === '') {
+    setEmailError('Email is required');
+    setavailable(false)
+  } else if (!validateEmail(value)) {
+    setEmailError('Invalid email format');
+    setavailable(false)
+  }else if (validateEmail(value)) {
+    setavailable(true)
+  } else {
+    setEmailError('');
   }
+}
+
+const handlesubmit=(e)=>{
+  if(available===true)
+  {
+    axios.post(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}api/userdata/newsletter`,
+      { 'email': `${email}` },
+    ).then((data)=>{
+      console.log(data)
+    })
+  }
+  else
+  {
+    notifyError(emailError)
+  }
+}
   return (
     <section
       className="cta__area pt-50 pb-50 p-relative include-bg jarallax"
@@ -29,8 +67,9 @@ const ShopCta = () => {
               <div className="cta__form-13">
                 
                   <div className="cta__input-13">
-                    <input type="email" onChange= { event => setvalue(event.target.value)} placeholder="Enter Your Email" />
-                    <button onClick={handleSubmit} className="tp-btn">
+                  <input type="email" value={email} onChange={handleEmailChange} />
+                    {emailError && <div>{emailError}</div>}
+                    <button onClick={handlesubmit} className="tp-btn">
                       Subscribe
                     </button>
                   </div>

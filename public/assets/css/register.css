@@ -1,0 +1,170 @@
+.registerDiv{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+    height:300px;
+    display:flex;
+    flex-direction:row;
+}
+
+.registerBox1{
+    width:100%;
+    margin:0 auto;
+    margin-top:10px;
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    position:absolute;
+    transition:left 1s;
+}
+
+.mobileNumInp{
+    display:flex;
+    flex-direction:row;
+}
+
+.registerBox1 input{
+    border:none !important;
+    border-bottom:1px solid #000 !important;
+    background-color:unset !important;
+}
+
+.registerBox1 select{
+    height:54px;
+    margin:0 5px;
+    border:none !important;
+    border-bottom:1px solid #000 !important;
+    background-color:unset !important;
+}
+
+.emailInp{
+    margin:5px;
+}
+
+.RegisterBtn{
+    color:white;
+    background-color:#24249e;
+    padding:10px 20px;
+    border-radius:5px;
+    border:none;
+    float:right;
+}
+
+.phnoInp{
+    width:300px !important;
+}
+
+.emailInp{
+    width:360px !important;
+}
+
+.registerBox2,.registerBox3,.registerBox4{
+    position:absolute;
+    left:500px;
+    width:100%;
+    transition:left 1s;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.verifyCodeText{
+    display:flex !important;
+    flex-direction:row !important;
+}
+
+.verifyCodeText input{
+    border:1px solid #000 !important;
+    background-color:unset !important;
+    padding:0 !important;
+    width:40px !important;
+    height:40px !important;
+    margin:0 5px;
+    border-radius:5px;
+    text-align:center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.btn-Elemt{
+    color:white;
+    background-color:#24249e;
+    padding:5px 10px;
+    border-radius:5px;
+    border:none;
+    margin-top:20px;
+}
+
+.resendBoxDiv{
+    margin-top:20px;
+    cursor:pointer;
+    color:#24249e;
+    float:right !important;
+}
+
+.promoDiv{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:flex-end;
+    width:100% !important;
+    margin-bottom:20px;
+}
+
+.promoDiv label{
+    margin:0 !important;
+    padding:0 !important;
+    width:100px;
+}
+
+.promoDiv input{
+    border:none !important;
+    border-bottom:1px solid #000 !important;
+    background-color:unset !important; 
+    margin:0 !important;
+    padding:0 !important;  
+    width:150px !important; 
+}
+
+.registerBox3 input{
+    border:none !important;
+    border-bottom:1px solid #000 !important;
+    background-color:unset !important;
+}
+
+.termsandcond{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.termsandcond input{
+    margin-top:5px;
+}
+
+.registerBox4{
+    gap:10px;
+}
+
+.pinTextInp input{
+    border:1px solid #000 !important;
+    background-color:unset !important;
+    padding:0 !important;
+    width:40px !important;
+    height:40px !important;
+    margin:0 5px;
+    border-radius:5px;
+    text-align:center;
+}

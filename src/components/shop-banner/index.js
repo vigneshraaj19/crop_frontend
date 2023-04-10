@@ -19,7 +19,7 @@ const ShopBanner = () => {
                 <p>Last call for up to <span>32%</span> off! </p>
 
                 <div className="banner__btn">
-                  <Link href="/shop" className="tp-btn">
+                  <Link href="/promos" className="tp-btn">
                     Buy Now
                     <RightArrow/>
                   </Link>

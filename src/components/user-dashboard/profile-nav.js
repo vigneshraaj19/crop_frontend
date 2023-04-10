@@ -7,10 +7,12 @@ const ProfileNav = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   // handle logout
-  const handleLogout = () => {
-    dispatch(userLoggedOut());
-    router.push('/')
+  
+  const handleLogout = async () => {
+    await dispatch(userLoggedOut()); 
+   
   }
+  
   return (
     <div className="profile__tab mr-40">
       <nav>
@@ -82,6 +84,23 @@ const ProfileNav = () => {
             </span>{" "}
             Change Password
           </button>
+
+          <button
+            className="nav-link"
+            id="nav-card-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-card"
+            type="button"
+            role="tab"
+            aria-controls="nav-card"
+            aria-selected="false"
+          >
+            <span>
+              <i className="fa-regular fa-lock"></i>
+            </span>{" "}
+           Crop Card
+          </button>
+
 
           <button onClick={handleLogout} className="nav-link" type="button">
             <span>

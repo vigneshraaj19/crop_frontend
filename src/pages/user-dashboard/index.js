@@ -18,7 +18,6 @@ const UserOrders = () => {
     refetch,
   } = useGetUserOrdersQuery();
   
-  console.log(orderData,"orderdata");
   const router = useRouter();
   useEffect(() => {
     const isAuthenticate = localStorage.getItem("auth");

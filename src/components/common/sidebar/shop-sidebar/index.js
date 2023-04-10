@@ -7,6 +7,8 @@ import ShopColor from "../../shop-filtering/shop-color";
 import ShopPrice from "../../shop-filtering/shop-price";
 
 const ShopSidebar = ({ all_products }) => {
+
+  console.log(all_products)
   const router = useRouter();
   const handleReset = () => {
     router.push("/shop");

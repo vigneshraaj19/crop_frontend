@@ -49,7 +49,7 @@ const BillingDetails = ({ register, errors }) => {
           placeholder="First Name"
           register={register}
           error={errors?.firstName?.message}
-          defaultValue={user?.name}
+          defaultValue={user?.name.fName}
         />
         <CheckoutFormList
           name="lastName"
@@ -57,6 +57,7 @@ const BillingDetails = ({ register, errors }) => {
           label="Last Name"
           placeholder="Last Name"
           register={register}
+          defaultValue={user?.name.lName}
           error={errors?.lastName?.message}
         />
         <CheckoutFormList
@@ -108,6 +109,8 @@ const BillingDetails = ({ register, errors }) => {
           placeholder="Phone number"
           register={register}
           error={errors?.contact?.message}
+          defaultValue={user?.mobileNumber
+          }
         />
 
         <div className="order-notes">

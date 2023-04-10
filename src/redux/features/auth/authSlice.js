@@ -15,7 +15,9 @@ const authSlice = createSlice({
     userLoggedOut: (state) => {
       state.accessToken = undefined;
       state.user = undefined;
-      localStorage.removeItem("auth")
+       localStorage.removeItem("auth");
+       window.location.href = '/'
+
     },
   },
 });

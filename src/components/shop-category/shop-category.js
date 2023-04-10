@@ -6,6 +6,7 @@ import SingleCategory from "./single-category";
 import ErrorMessage from "@components/error-message/error";
 import CategoryLoader from "@components/loader/category-loader";
 import { useGetCategoriesQuery } from "src/redux/features/categoryApi";
+import Link from "next/link";
 
 const ShopCategoryArea = () => {
   const [loop, setLoop] = useState(false);
@@ -36,8 +37,11 @@ const ShopCategoryArea = () => {
     ));
   }
   return (
-    <section className="product__category pt-100 pb-100">
+    <section className="product__category  pt-100 pb-100">
       <div className="container">
+        <Link href="/promos">
+      <h2 style={{"fontFamily":"Sans-serif"}}>Earn CROPs</h2>
+      </Link>
         <div className="row">
           <div className="col-xxl-12">
             <div className="product__category-slider">

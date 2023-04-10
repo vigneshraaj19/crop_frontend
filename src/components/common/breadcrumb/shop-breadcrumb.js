@@ -9,16 +9,16 @@ const ShopBreadcrumb = () => {
           <div className="col-xxl-7">
             <div className="breadcrumb__content p-relative z-index-1">
               <div className="breadcrumb__list has-icon">
-                <span className="breadcrumb-icon">
+                {/* <span className="breadcrumb-icon">
                   <Home />
                 </span>
                 <span>
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </span>
                 <span className="dvdr">
                   <i className="fa-regular fa-angle-right"></i>
                 </span>
-                <span>Products</span>
+                <span>Products</span> */}
               </div>
             </div>
           </div>

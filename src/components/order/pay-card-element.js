@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import { CardElement } from "@stripe/react-stripe-js";
 
 const PaymentCardElement = ({ stripe, cardError, cart_products,isCheckoutSubmit }) => {
+
+  const [pay,setpay]=useState(false);
+
+  const paymentdetails = () => {
+    setpay(true) 
+  };
+
   return (
     <div className="my-2">
       <CardElement
@@ -25,6 +32,7 @@ const PaymentCardElement = ({ stripe, cardError, cart_products,isCheckoutSubmit 
           type="submit"
           className="tp-btn"
           disabled={!stripe || cart_products.length === 0 || isCheckoutSubmit}
+          onClick={paymentdetails}
         >
           Place order
         </button>

@@ -8,12 +8,13 @@ export const apiSlice = createApi({
       const token = getState()?.auth?.accessToken;
   
       if (token) {
-          headers.set("Authorization", `Bearer ${token}`);
+           headers.set("Authorization", `Bearer ${token}`);
+          // headers.set("Authorization", `${token}`);
       }
       return headers;
   },
   }),
-  tagTypes: ["Category", "Products", "Discount", "Coupon", "Product","RelatedProducts"],
+  tagTypes: ["categoryproducts", "Products", "Discount", "Coupon", "Product","RelatedProducts"],
   endpoints: (builder) => ({}),
 });
 

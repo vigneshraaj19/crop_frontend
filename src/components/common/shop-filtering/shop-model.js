@@ -5,18 +5,21 @@ import { Search } from "@svg/index";
 import { useEffect } from "react";
 
 const ShopModel = ({ all_products }) => {
+
   let all_brands = [...new Set(all_products.map((prd) => prd.brand))];
   const [brands, setBrands] = useState(all_brands);
   const [isChecked, setIsChecked] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const router = useRouter();
 
+  const router = useRouter();
   // handle brand
   const handleBrand = (value) => {
     if (isChecked === value) {
       setIsChecked("");
       router.push(`/shop`);
-    } else {
+    } 
+    else
+     {
       setIsChecked(value);
       router.push(
         `/shop?brand=${value
@@ -27,17 +30,19 @@ const ShopModel = ({ all_products }) => {
       );
     }
   };
-
   // handleSubmit
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (searchValue) {
       let searchBrands = all_brands.filter((b) =>
         b.toLowerCase().includes(searchValue.toLowerCase())
       );
       setBrands(searchBrands);
+
     } else {
       setBrands(all_brands);
+
     }
   };
 
@@ -97,7 +102,7 @@ const ShopModel = ({ all_products }) => {
                     id={brand}
                     checked={
                       router.query.brand ===
-                      brand.toLowerCase().replace("&", "").split(" ").join("-")
+                      brand?.toLowerCase().replace("&", "").split(" ").join("-")
                         ? "checked"
                         : false
                     }

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 // internal
 import OrderInfo from "./order-info";
@@ -7,6 +6,7 @@ import ProfileNav from './profile-nav';
 import MyOrders from './my-orders';
 import ChangePassword from './change-password';
 import UpdateUser from './update-user';
+import CropCard from './CropCard';
 
 const DashboardArea = ({orderData}) => {
   return (
@@ -58,6 +58,14 @@ const DashboardArea = ({orderData}) => {
                       aria-labelledby="nav-password-tab"
                     >
                       <ChangePassword/>
+                    </div>
+                    <div
+                      className="tab-pane fade"
+                      id="nav-card"
+                      role="tabpanel"
+                      aria-labelledby="nav-card-tab"
+                    >
+                      <CropCard />
                     </div>
                     {/*  */}
                   </div>

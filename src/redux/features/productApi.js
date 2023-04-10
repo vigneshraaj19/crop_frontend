@@ -9,6 +9,13 @@ export const authApi = apiSlice.injectEndpoints({
       providesTags: ["Products"],
       keepUnusedDataFor: 600,
     }),
+    //get categoty products
+    getProductsByCategory : builder.query({
+      query: () => `api/products/categoryproducts`,
+      // body:data, 
+      providesTags: ["categoryproducts"],
+      keepUnusedDataFor: 600,
+    }),
     // get discount products
     getDiscountProducts: builder.query({
       query: () => `api/products/discount`,
@@ -22,7 +29,7 @@ export const authApi = apiSlice.injectEndpoints({
       invalidatesTags: (result, error, arg) => [
         { type: "RelatedProducts", id },
       ],
-    }),
+    }),  
     // getRelatedProducts
     getRelatedProducts: builder.query({
       query: ({ id, tags }) => {
@@ -41,6 +48,7 @@ export const authApi = apiSlice.injectEndpoints({
 });
 
 export const {
+  useGetProductsByCategoryQuery,
   useGetShowingProductsQuery,
   useGetDiscountProductsQuery,
   useGetProductQuery,

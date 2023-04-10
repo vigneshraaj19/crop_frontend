@@ -26,20 +26,19 @@ const OrderArea = ({
   const value = useSelector((state) => state);
   var discount;
 
-  if (value.coupon.coupon_info === undefined) {
+  if (value.coupon.coupon_info === undefined) 
+  {
     discount = 0;
-  } else {
+  } 
+  else
+  {
     discount = value.coupon.coupon_info.discountPercentage;
   }
-  console.log(value)
-
-  console.log(discount)
   var discountAmoun = cartTotal * discount / 100
-  console.log(discountAmoun)
 
   return (
     <div className="your-order mb-30 ">
-      <h3>Your order</h3>
+        <h3 style={{"fontFamily":"Sans-serif"}}>Your Orders</h3>
       <div className="your-order-table table-responsive">
         <table>
           <thead>
@@ -78,6 +77,7 @@ const OrderArea = ({
           <div className="accordion-item">
             <h2 className="accordion-header" id="checkoutOne">
               <button
+              style={{"fontFamily":"Sans-serif"}}
                 className="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
@@ -85,7 +85,7 @@ const OrderArea = ({
                 aria-expanded="true"
                 aria-controls="bankOne"
               >
-                Direct Bank Transfer
+                  Direct Bank Transfer
                 <span className="accordion-btn"></span>
               </button>
             </h2>

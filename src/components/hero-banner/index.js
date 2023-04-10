@@ -73,13 +73,14 @@ const HeroBanner = () => {
           slidesPerView={1}
           loop={true}
           autoplay={{
-            delay: 2000,
+            delay: 5000,
           }}
         >          
           {slider_data.map((item) => (
             <SwiperSlide
               key={item.id}
-              className="slider__item-13 slider__height-13 grey-bg-17 d-flex align-items-end"
+              // slider__height-13 
+              className="slider__item-13 grey-bg-17 d-flex align-items-end z-50" style={{height: "550px"}}
             >
               <div className="container">
                 <div className="row align-self-end">
@@ -91,7 +92,7 @@ const HeroBanner = () => {
                       <h3 className="slider__title-13">{item.title}</h3>
 
                       <div className="slider__btn-13 ">
-                        <Link href="/shop" className="tp-btn-border">
+                        <Link href="/promos" className="tp-btn-border">
                           Shop Now
                           <span>
                             <RightArrow />
@@ -102,12 +103,13 @@ const HeroBanner = () => {
                   </div>
                   <div className="col-xl-6 col-lg-6">
                     <div className="slider__thumb-13 text-end mr-40">
-                      <span className="slider__thumb-13-circle-1"></span>
-                      <span className="slider__thumb-13-circle-2"></span>
+                      {/* <span className="slider__thumb-13-circle-1"></span>
+                      <span className="slider__thumb-13-circle-2"></span> */}
                       <Image
                         src={item.img}
                         alt="slider img"
                         priority
+                        width="320" height="362"
                       />
                     </div>
                   </div>

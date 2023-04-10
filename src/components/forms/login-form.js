@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import { EyeCut, Lock, UserTwo } from "@svg/index";
 import ErrorMessage from "@components/error-message/error";
 import { useLoginUserMutation } from "src/redux/features/auth/authApi";
-import { notifyError, notifySuccess } from "@utils/toast";
+import { notifyError } from "@utils/toast";
 import PinInput from 'react-pin-input';
 
 const schema = Yup.object().shape({
@@ -34,14 +34,14 @@ const LoginForm = () => {
   const onSubmit = (data) => {
     loginUser({
       email: data.email,
-      password: passCode
+      password: passCode,
+      login_method: 2
     })
       .then((data) => {
         if (data?.error) {
           notifyError(data?.error?.data?.error)
         }
         else {
-          notifySuccess("Login successfully");
           router.push("/");
         }
       })

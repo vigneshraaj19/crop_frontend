@@ -9,10 +9,14 @@ import ShopBreadcrumb from "@components/common/breadcrumb/shop-breadcrumb";
 import ShopArea from "@components/shop/shop-area";
 import ErrorMessage from "@components/error-message/error";
 import { useGetShowingProductsQuery } from "src/redux/features/productApi";
+import { useGetProductsByCategoryQuery } from "src/redux/features/productApi";
 import ShopLoader from "@components/loader/shop-loader";
 
-export default function Shop({ query }) {
+
+export default function Shop({ query }) 
+{
   const { data: products, isError, isLoading } = useGetShowingProductsQuery();
+  // const { data: products, isError, isLoading } = useGetProductsByCategoryQuery();
   const [shortValue,setShortValue] = useState("");
 
   // selectShortHandler
@@ -34,7 +38,10 @@ export default function Shop({ query }) {
     content = <ErrorMessage message="No products found!" />;
   }
 
+    ////////////////////////////////////////////////////////////////
+
   if (!isLoading && !isError && products?.products?.length > 0) {
+    //this is not propoer
     let all_products = products.products;
     let product_items = all_products;
     // parent
@@ -51,10 +58,11 @@ export default function Shop({ query }) {
     if (Category) {
       product_items = product_items.filter(
         (product) =>
-          product.parent.toLowerCase().replace("&", "").split(" ").join("-") ===
+          product.parent?.toLowerCase().replace("&", "").split(" ").join("-") ===
           Category
       );
     }
+    
     if (category) {
       product_items = product_items.filter(
         (product) =>
@@ -65,6 +73,7 @@ export default function Shop({ query }) {
             .join("-") === category
       );
     }
+
     if (brand) {
       product_items = product_items.filter(
         (product) =>
@@ -115,13 +124,14 @@ export default function Shop({ query }) {
 
     content = (
       <ShopArea
+        isError={isError}
+        isLoading={isLoading}
         products={product_items}
         all_products={all_products}
         shortHandler={selectShortHandler}
       />
     );
   }
-
   return (
     <Wrapper>
       <SEO pageTitle={"Shop"} />

@@ -27,6 +27,7 @@ const MyOrderItems = ({ items, itemsPerPage }) => {
             <th scope="col">Order Id</th>
             <th scope="col">Order Time</th>
             <th scope="col">Status</th>
+            <th scope="col">Crop points</th>
             <th scope="col">View</th>
           </tr>
         </thead>
@@ -55,6 +56,11 @@ const MyOrderItems = ({ items, itemsPerPage }) => {
                 >
                   {item?.status}
                 </td>
+                <th>
+                 
+                {item?.points}
+                 
+                </th>
                 <td>
                   <Link href={`/order/${item._id}`} className="tp-btn">
                     Invoice

@@ -19,8 +19,9 @@ function SingleOrderInfo({ icon, info, title }) {
 }
 
 const OrderInfo = ({ orderData }) => {
+
+
   const {user} = useSelector(state => state.auth);
-  console.log(user)
   return (
     <div className="profile__main">
       <div className="profile__main-top pb-80">
@@ -28,7 +29,8 @@ const OrderInfo = ({ orderData }) => {
           <div className="col-md-6">
             <div className="profile__main-inner d-flex flex-wrap align-items-center">
               <div className="profile__main-content">
-                <h4 className="profile__main-title text-capitalize">Welcome {user?.name.fName}</h4>
+                <h4 className="profile__main-title text-capitalize">Welcome    {user?.name.fName}
+                </h4>
               </div>
             </div>
           </div>

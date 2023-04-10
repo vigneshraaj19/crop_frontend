@@ -23,7 +23,6 @@ export const authApi = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-           console.log(result.data.token);
           localStorage.setItem(
             "auth",
             JSON.stringify({
@@ -115,7 +114,7 @@ export const authApi = apiSlice.injectEndpoints({
     // change password
     updateProfile: builder.mutation({
       query: ({id,...data}) => ({
-        url: `api/user/update-user/${id}`,
+        url: `api/userdata/updateprofile`,
         method: "PUT",
         body: data,
       }),
@@ -144,7 +143,7 @@ export const authApi = apiSlice.injectEndpoints({
   }),
 });
 export const {
-  useLoginUserMutation,
+  useLoginUserMutation, 
   useRegisterUserMutation,
   useConfirmEmailQuery,
   useResetPasswordMutation,

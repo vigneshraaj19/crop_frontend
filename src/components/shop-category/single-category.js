@@ -11,7 +11,7 @@ const SingleCategory = ({ item }) => {
         <a
           onClick={() =>
             router.push(
-              `/shop?Category=${item.parent
+              `/promos?Category=${item.parent
                 .toLowerCase()
                 .replace("&", "")
                 .split(" ")

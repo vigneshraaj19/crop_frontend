@@ -95,6 +95,8 @@ const useCheckoutSubmit = () => {
   ]);
 
   // create payment intent
+
+
   useEffect(() => {
     if (cartTotal) {
       createPaymentIntent({
@@ -124,10 +126,13 @@ const useCheckoutSubmit = () => {
     if (isError) {
       return notifyError("Something went wrong");
     }
-    const result = offerCoupons?.filter(
+    console.log("offerCoupons",offerCoupons);
+    console.log("couponRef",couponRef);
+    
+    const result = offerCoupons.data?.filter(
       (coupon) => coupon.couponCode === couponRef.current?.value
     );
-
+   console.log(result,"coupon")
     if (result.length < 1) {
       notifyError("Please Input a Valid Coupon!");
       return;
@@ -177,6 +182,8 @@ const useCheckoutSubmit = () => {
     dispatch(set_shipping(data));
     setIsCheckoutSubmit(true);
 
+    
+
     let orderInfo = {
       name: `${data.firstName} ${data.lastName}`,
       address: data.address,
@@ -195,6 +202,7 @@ const useCheckoutSubmit = () => {
       user:`${user?._id}`,
       points: points
     };
+
     if (!stripe || !elements) {
       return;
     }
@@ -221,7 +229,6 @@ const useCheckoutSubmit = () => {
       return;
     }
   };
-
   // handlePaymentWithStripe
   const handlePaymentWithStripe = async (order) => {
     try {
@@ -230,16 +237,20 @@ const useCheckoutSubmit = () => {
           payment_method: {
             card: elements.getElement(CardElement),
             billing_details: {
-              name: user?.name,
+              name: user?.name.fName,
               email: user?.email,
             },
           },
         });
-      if (intentErr) {
+
+      if (intentErr)
+      {
         notifyError(intentErr.message);
-      } else {
-        // notifySuccess("Your payment processed successfully");
-      }
+      } 
+      else
+      {
+        notifySuccess("Your payment processed successfully");
+    
 
       const orderData = {
         ...order,
@@ -254,12 +265,14 @@ const useCheckoutSubmit = () => {
 
           }
           else {
-            router.push(`/order/${result.data?.order?._id}`);
+            // router.push(`/order/${result.data?.order?._id}`);
+            router.push(`/`);
             notifySuccess("Your Order Confirmed!");
           }
           if(result.data?.success){
           }
         })
+      }
     } catch (err) {
       console.log(err);
     }

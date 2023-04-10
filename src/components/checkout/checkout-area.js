@@ -10,8 +10,8 @@ const CheckoutArea = ({handleSubmit,submitHandler,...others}) => {
         <form onSubmit={handleSubmit(submitHandler)}>
           <div className="row">
             <div className="col-lg-6">
-              <div className="checkbox-form">
-                <h3>Billing Details</h3>
+              <div className="checkbox-form"> 
+              <h3 style={{"fontFamily":"Sans-serif"}}>Billing details</h3>
                 {/* billing details start*/}
                 <BillingDetails {...others} />
                 {/* billing details end*/}
